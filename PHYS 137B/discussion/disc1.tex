@@ -1,0 +1,151 @@
+\documentclass[11pt]{article}
+
+\input{preamble}
+
+\title{Physics 137B Discussion 1}
+\author{Walter Cheng}
+\date{27 August, 2025}
+
+
+\begin{document}
+\maketitle
+
+\section*{Exercise 0: Warm Up}
+\begin{enumerate}[label=\alph*)]
+	\item What is the momentum operator in the position representation in three dimensions?\\
+		\textit{Hint:} What is the canonical commutation relation?\\
+
+		answer
+ 
+	\item From (a), what is $p^2 = \mathbf{p \cdot p}$ in three dimensions in the position representation?\\
+		
+		answer
+	
+	\item Starting from the time-dependent Schrödinger equation in three dimensions for a potential $V(\mathbf{x})$, derive the time-independent version.\\
+		\textit{Hint:} Use separation of variables.\\
+
+		answer
+
+\end{enumerate}
+
+
+\section*{Exercise 1: Rigged Hilbert Space}
+A Hilbert space is mathematically defined as a \textit{complete} vector space with an inner product. A vector space with an inner product is \textbf{complete} if it includes not only all finite sums of vectors in a basis, but also all limits of convergent sequences, i.e.\ given a sequence $(v_n)$ of vectors in the Hilbert space, $v$ is the \textbf{limit} of the sequence if $\lim_{n\to\infty}\|v_n - v\| = 0$, where $\|v\| = \sqrt{v \cdot v}$.
+
+\begin{enumerate}[label=\alph*)]
+\item Consider a Hilbert space $\mathcal H$ that consists of all functions $\psi(x)$ such that
+\[
+\int_{-\infty}^{\infty} |\psi(x)|^2\,dx < \infty .
+\]
+Show that there are functions in $\mathcal H$ for which $\hat{x}\psi(x)=x\psi(x)$ is not in $\mathcal H$.\\
+
+answer
+
+\item Consider the function space $\Omega \subset \mathcal H$ which consists of all $\varphi(x)$ that satisfy the set of conditions
+\[
+\int_{-\infty}^{\infty} |\varphi(x)|^2 \,(1+|x|)^n\,dx < \infty,
+\]
+for any $n\in\{0,1,2,\dots\}$. Show that for any $\varphi(x)\in\Omega$, $\hat{x}\varphi(x)$ is also in $\Omega$. $\Omega$ is called the \textbf{nuclear space}. \emph{Hint:} Binomial theorem.\\
+
+answer
+	
+\item The \textbf{extended} space $\Omega^\times$ consists of those functions $\chi(x)$ which satisfy
+\[
+(\chi,\varphi)=\int_{-\infty}^{\infty}\chi^{*}(x)\,\varphi(x)\,dx < \infty,
+\]
+for any $\varphi\in\Omega$, where $(\,\cdot\,,\,\cdot\,)$ is the inner product on $\mathcal H$. Which of the following functions belong to $\Omega$, to $\mathcal H$, and/or to $\Omega^\times$? \emph{Hints:} In order to sit in $\Omega$, functions must vanish faster than any power of $x$ as $|x|\to\infty$. Thus, as long as functions don’t diverge at $\infty$ more strongly than any power of $|x|$, they are in $\Omega^\times$.
+
+\medskip
+\noindent\textbf{Remark.} The collection $(\Omega, \mathcal H, \Omega^\times)$ is called ``rigged Hilbert space,'' and this is a rigorous way to include all the formalism (e.g.\ eigenvectors of position are delta functions, and hence can’t belong to an $L^2$ space) into the Hilbert space formulation of quantum mechanics. Note that $\Omega \subset \mathcal H \subset \Omega^\times$ (it’s easy to see this once you realize $\mathcal H = \mathcal H^\times$). For more details, see Ballentine \emph{Quantum Mechanics}, Chapter~1.
+
+\begin{enumerate}[label=\roman*)]
+\item $\sin(x)$\\
+
+	answer
+
+\item $\dfrac{\sin(x)}{x}$\\
+
+	answer
+
+\item $x^{2}\cos(x)$\\
+
+	answer
+
+\item $e^{-ax}, \; a > 0.$\\
+
+	answer
+
+\item $\dfrac{\ln(1+|x|)}{1+|x|}$\\
+
+	answer
+
+\item $e^{-x^{2}}$\\
+
+	answer
+
+\item $x^{4}e^{-|x|}$\\
+
+	answer
+
+\item $\delta(x-a)$ for $a$ real.\\
+
+	answer
+\end{enumerate}
+
+\end{enumerate}
+
+\section*{Exercise 2: Harmonic Oscillator}
+Solve the eigenvalue problem for the 3-D isotropic, harmonic oscillator, whose hamiltonian is 
+\[
+H = \frac{p^2}{2m} + \frac{m\omega^2 x^2}{2}, \quad \text{where } p^2 = \mathbf{p}\cdot \mathbf{p}, \; x^2 = \mathbf{x}\cdot \mathbf{x}
+\]
+is the 3-D dot product.  
+\emph{Hint:} There’s a way to do this without any calculations (if you remember the 1-D oscillator)!\\
+
+answer
+
+\section*{Exercise 3}
+A particle of mass $m$ is placed in a finite spherical well
+\[
+V(r) = \begin{cases}
+ -V_0, & r \leq a, \\
+ 0, & r \geq a .
+\end{cases}
+\]
+Find the equation that quantizes the energy (you don’t need to solve it), by solving the radial Schrödinger equation with $\ell = 0$. Explain how you could solve this equation and obtain the energies. Show that there is no bound state if $V_0 a^2 < \pi^2 \hbar^2 / 8m$.  
+
+\emph{Hint:} Recall that the radial Schrödinger equation is identical to the time-independent, 1-dimensional Schrödinger equation with the wavefunction replaced by $u(r) = rR(r)$ (where $\psi(r,\theta,\varphi) = R(r)\Theta(\theta)\Phi(\varphi)$) and potential
+\[
+V_{\text{eff}}(r) = V(r) + \frac{\hbar^2 \ell(\ell+1)}{2mr^2}.
+\]\\
+
+answer
+
+
+\section*{Exercise 4: Spin Representations}
+\begin{enumerate}[label=\alph*)]
+\item Find the eigenvalues and eigenvectors of $S_z$.\\
+
+answer
+
+\item Do the same for $S_y$, and write them in terms of $\ket{\uparrow}$ and $\ket{\downarrow}$, the eigenvectors of $S_z$.\\
+
+answer
+
+\item For a system of two spin-$1/2$ particles, starting with the ``highest weight'' state $\ket{\uparrow \uparrow}$, find all the states in the triplet.  
+\emph{Hint:} Apply the lowering operator.\\
+
+answer
+
+\item For a system of two spin-$1/2$ particles, are there any other states than the ones you found in (c)? If so, what are they? What is the action of $S_-$, $S_+$ on them?\\
+
+answer
+
+\item Describe how you would approach finding the Clebsch–Gordan coefficients for arbitrary spin systems.
+
+answer
+
+\end{enumerate}
+
+
+\end{document}
