@@ -11,8 +11,52 @@
 \maketitle
 
 \section{Overview of Topology}
+In this class, we will deal with a lot of \textbf{metric spaces}. A metric space is defined as a set and a function $(X, d^{X})$ that satisfies the following axioms: for $x, y, z \in X$,
+\begin{enumerate}
+	\item \textbf{positive definiteness}: $d^{X}(x, y) \geq 0$ and $d^{X}(x,y) = 0$ if and only if $x=y$.
+	\item \textbf{symmetry}: $d^{X}(x,y) = d^{X}(y, x)$
+	\item \textbf{triangle inequality}: $d^X(x, z) \leq d^X(x, y) + d^X(y, z)$
+\end{enumerate}
+
+Now consider the set of all points on a balloon (i.e. a subset of $\R^3$). We could define a couple of metrics here:
+\begin{enumerate}
+	\item The euclidean distance between two points.
+	\item The distance of the shortest path between two points along the surface of the balloon.
+\end{enumerate}
+
+Imagine if we deformed the balloon, stretching it out or squishing it. This would correspond to a change in the metric! However, if we were to do something like puncture the balloon, turning it into a donut, then our metric space is fundamentally different. But how do you go about proving this mathematically?
+
+Mathematicians decided to attach algebraic structures to metric spaces. This is the idea of \textbf{algebraic topology}. In order to show that a deformed balloon is topologically equivalent to the original balloon, we can show that the algebraic structures attached to the two spaces are isomorphic. Thus, an important concept to start with is \textbf{continuity}.
 
 \section{Continuity}
+We'll begin with the basic $\epsilon$-$\delta$ definition of continuity. Let $(X, d^X), (Y, d^Y)$ be metric spaces. Let $f\colon X \to Y$ be a function and $x_0 \in X$.\\
+\definition[Continuity] $f$ is \textbf{continuous} at $x_0$ if for every $\epsilon > 0$ there is a $\delta > 0$ such that
+\[d^X(x, x_0) < \delta \implies d^Y(f(x), f(x_0)) < \epsilon\]
 
+There are other ways we might formalize this idea. One way is to introduce the concept of balls:
+
+\definition[Open Ball] For any metric space $(Z, d^Z)$ and $z \in Z$, $r \in \R^+$, the \textbf{open ball} around $z$ of radius $r$, is
+\[B(z, r) = \{z' \in Z : d^Z(z, z') < r\}\]
+
+With this, we can reformulate our definition of continuity:\\
+\definition $f$ is continuous at $x_0$ if for every $\epsilon > 0$ there is a $\delta > 0$ such that
+\[x \in B(x_0, \delta) \implies f(x) \in B(f(x_0), \epsilon)\]
+
+Or we could remove the choice of $\epsilon, \delta$ completely:\\
+\definition $f$ is continuous at $x_0$ if given any open ball $O$ about $f(x_0)$ there is some open ball $U$ about $x_0$ such that $x \in U \implies f(x) \in O$.
+
+Lastly, we can generalize to open sets rather than balls.\\
+\definition[Open Subset] A subset $A$ of a metric space is \textbf{open} if for every $a \in A$ there is an open ball $O$ with $a \in O$, and $O \subseteq A$.
+
+i.e. a set is open if an open ball can be drawn around every point in the set. We can once again rewrite our definition of continuity:\\
+\definition $f$ is continuous at $x_0$ if for every open set $O \subseteq Y$ containing $f(x_0)$ there is an open $U \subseteq X$ containing $x_0$ such that $f(U) \subseteq O$, where $f(U) = \{f(x) : x \in U\}$.
+
+While we're talking about applying functions to a set, let's define the preimage.\\
+\definition[Preimage] Let $f(U) \subseteq O$. The \textbf{preimage} of $O$ in $f$ is the set
+\[f^{-1}(O) = \{x \in X : f(x) \in O\}\]
+
+Thus with this definition we can rewrite the last line of Definition 6:\\
+\definition $f$ is continuous at $x_0$ if for every open set $O \subseteq Y$ containing $f(x_0)$ there is an open $U \subseteq X$ containing $x_0$ such that $U \subseteq f^{-1}(O)$.
 
 \end{document}
+
