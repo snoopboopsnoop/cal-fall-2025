@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+
+\input{preamble}
+
+\title{Math 202a Lecture Notes\\ Lecture 1}
+\date{28 August, 2025}
+\author{Walter Cheng}
+
+\begin{document}
+
+\maketitle
+
+\section{Conceptual Introduction}
+A main theme of this course will be taking some classical space and through some expansion considering it a core to a larger modern space. A good example of this is the rational $\to$ real numbers relationship.
+
+We have the rationals, which we can relate to a sieve; there are clear holes in it, but the rationals themselves are still countable and dense. We use a procedure for "completion" that will expand the rationals into the "solid line" of the reals.
+
+Just a reminder,
+\definition[Rationals] A \textbf{rational number} $q$ is represented as
+\[q = \frac{m}{n}, \quad m \in \Z, n \in \N^+\]
+
+This set forms a metric space with the following distance function,
+\[d(q_1, q_2) = \frac{|m_1n_2 - m_2n_1|}{n_1n_2}\]
+
+\section{Equivalence}
+
+Our goal now is to express the irrationals as a limit of a sequence of rational numbers. First we'll define some stuff that will help with that.\\
+\definition[Equivalence Relation] An \textbf{equivalence relation} is a set and operation $(S, \sim)$ that satisfies the following 3 axioms. We can think of $\sim \, \subseteq S \times S$. For $x, y, z \in S$,
+\begin{enumerate}
+	\item (reflexive) $x \sim x$
+	\item (symmetric) $x \sim y \implies y \sim x$
+	\item (transitive) $x \sim y \cap y \sim z \implies x \sim z$
+\end{enumerate}
+
+We can partition $S$ into equivalence classes, where the equivalence class for some $s \in S$ is the set $\{x \in S : x \sim s\}$.
+
+\section{Convergence}
+Consider a sequence in $\Q$, $(x_n : n \in \N)$. We can define convergence of this sequence to some point $x$ by saying that $\lim_n |x_n - x| = 0$, but what if our limit lands outside of $\Q$? To keep things internal, we will instead use the idea of a Cauchy sequence.\\
+\definition[Cauchy Sequence] A sequence is \textbf{Cauchy} if $\forall \epsilon > 0$, $\exists n_0$ s.t. $\forall n, m \geq n_0$,
+\[d(x_n, x_m) < \epsilon\]
+
+i.e. the points in the sequence eventually get very close together. This fixes our problem of defining irrational numbers as the limit of a sequence of rationals; is it true that
+\[0.999\ldots = 1.000\ldots\]
+
+using our notion of equivalence relation, we can say that
+\[(x_n) \sim (y_n) \iff |x_n - y_n| \to 0\]
+
+as well as express the distance between two irrational numbers,
+\[d(x, y) = \lim_n|x_n - y_n|\]
+
+This completes our definition of an irrational number internally (within $\Q$).
+
+\section{Size of Sets}
+
+We'll now consider intervals with an open left and closed right. Define the set of all finite disjoint unions of these to be $\mathcal{I}$. Formally,
+\[\mathcal{I} = \bigcup_{i=1}^n (a_i, b_i]\]
+
+where $n \in \N^+$ and $a_1 < b_1 < a_2 < \ldots < a_n < b_n$. Also permit $a_i, b_i \in \{-\infty, \infty\}$.
+
+$\mathcal{I}$ is closed under complement, pairwise intersection, and finite intersection (shown by induction).
+
+We define $l(I) = \sum_{i=1}^n (b_i - a_i) \in [0, \infty) \cup \{\infty\}$. Now we want to define the notion of distance.
+
+\end{document}
