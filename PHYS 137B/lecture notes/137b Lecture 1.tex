@@ -1,0 +1,108 @@
+\documentclass[11pt]{article}
+
+\input{preamble}
+
+\title{Physics 137B Lecture Notes\\ Lecture 1}
+\date{28 August, 2025}
+\author{Walter Cheng}
+
+\begin{document}
+
+\maketitle
+
+\section{Review of 137A}
+
+\subsection*{Spin}
+
+Spin is intrinsic angular momentum. It is nonclassical, derived from the \textbf{Dirac Equation}, and reconciles Quantum Mechanics and Special Relativity.
+
+It can be thought of in a classical (although fundamentally \textbf{incorrect}) sense with the planetary model of an atom. If an electron orbits around a proton, it has some sort of orbital momentum, $\vec{L}_{\text{orbital}} = \vec{r} \times \vec{p}$.
+
+If the electron were itself rotating around an axis, say at angular velocity $\omega$, it would have some sort of spin momentum, $\vec{L}_s = I\vec{\omega}$.
+
+Again, this is not a correct model; electrons have no volume (experimentalists have not been able to find any evidence that they do).
+
+So, we have our spin quantity $\hat{\vec{S}} = \hat{S}_x \hat{i} + \hat{S_y}\hat{j} + \hat{S_z}\hat{k}$. This is an observable quantity, so by a QM postulate has some corresponding operator.
+
+The elements of the spin operator do not commute, in fact the commutators are
+\[[\hat{S_x}, \hat{S_y}] = i\hbar \hat{S_z}, \quad [\hat{S_y}, \hat{S_z}] = i\hbar\hat{S_x}, \quad [\hat{S_z}, \hat{S_x}] = i\hbar\hat{S_y}\]
+
+although we do have $[\hat{S}^2, \hat{S_z}] = 0$. If two operators commute, we can find simultaneous eigenstates. So let's do that.
+
+Recall that we have
+\[\hat{S}^2 \ket{s, m} = \hbar^2 s(s+1) \ket{s, m}, \quad s = 0, 1, 2,\ldots\]
+\[\hat{S_z}\ket{s, m} = \hbar m\ket{s, m}, \quad s = 0, \frac{1}{2}, 1, \frac{3}{2}, 2, \ldots\]
+
+with the restrictions $-s \leq m \leq s$, i.e. there are $2s+1$ values of $m$. Every particle has a fixed $s$, but $m$ can change.
+
+Recall (for eigenstates of $S_z$,
+\[\langle S_x\rangle = \langle S_y \rangle = 0, \quad \langle S_z\rangle = \hbar m\]
+
+Think about $\vec{S}$ rotating in a circle in the $xy$ plane at some height $\hbar m$. 
+
+\subsection*{Spin States and Linear Algebra}
+
+For \textbf{electrons}, $s = 1/2 \implies m = -1/2, 1/2$. Thus, we have the spin-$\frac{1}{2}$ eigenstates $\ket{\frac{1}{2}, \frac{1}{2}} , \ket{\frac{1}{2}, -\frac{1}{2}}$.
+
+We refer to these as the "up" and "down" states, respectively, alternately denoted $\ket{+}, \ket{-}$ or $\ket{\uparrow}, \ket{\downarrow}$.
+
+The superposition postulate says that an arbitrary spin state can be written as a linear combination of eigenstates, in the case of the electron,
+\[\ket{\chi} = \alpha \ket{\uparrow} + \beta\ket{\downarrow}, \quad |\alpha|^2 + |\beta|^2 = 1\]
+
+This means that the spin states form a Hilbert space, in the electrons case a 2-dimensional Hilbert space. This also means we can express states as vectors,
+\[\ket{\uparrow} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad \ket{\downarrow} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\]
+
+and operators as matrices,
+\[\hat{S}_x = \begin{pmatrix} \hat{S}_{x_{11}} & \hat{S}_{x_{12}} \\ \hat{S}_{x_{21}} & \hat{S}_{x_{22}}\end{pmatrix} \quad \hat{S}_{x_{11}} = \braket{\uparrow | \hat{S}_x | \uparrow}\]
+
+where we attribute "1" to $\ket{\uparrow}$ and "2" to $\ket{\downarrow}$. This gives rise to the Pauli spin matrices,
+\[\hat{S}_x = \frac{\hbar}{2}\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \quad \hat{S}_y = \frac{\hbar}{2}\begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} \quad \hat{S}_z = \frac{\hbar}{2}\begin{pmatrix}1 & 0 \\ 0 & -1 \end{pmatrix}\]
+
+\subsection*{Measurement: Energy}
+How do we measure energy, and how does energy depend on spin?
+
+We can measure magnetic energy; here's a classical way to think of it that (basically) works. If we put $\vec{s}$ into a $\vec{B}$ field we can induce a $\Delta E$. For an electron spinning on its axis, we can think of it as a point charge $-e$ spinning around in a circle at velocity $v$, which translates into a current $I = -e/t$ around a loop of area $A = \pi r^2$. This induces a magnetic/dipole moment. Doing some E\&M,
+\[|\vec{\mu}| = IA = \frac{-e}{t}\pi r^2 = \frac{-e\pi r^2}{\frac{2\pi r}{v}}\]
+\[\mu = -\frac{1}{2}erv\frac{m}{m} = \frac{-e}{2m}(mrv) = \frac{-e}{2m}|\vec{L}|\]
+\[\vec{\mu} = \frac{-e}{2m}\vec{s}\]
+
+as we do with all approximations in physics we want to introduce a "fudge factor", in this case called the \textbf{gyromagnetic factor}, for correction. For electrons, $g = 2$, so
+\[\vec{\mu} = \frac{-eg}{2m} \vec{s} = \frac{-e}{m}\vec{s}\]
+\[E = - \vec{\mu}\cdot \vec{B} = \hat{H}\]
+
+\subsection*{Single Particle in a Box}
+
+For a single particle in a box, we have a wave function
+\[\ket{\Psi} = \Psi(\vec{r}, t)\ket{x}\]
+and the time dependent Schrodinger equation (TDSE):
+\[\hat{H}\ket{\Psi} = i\hbar\diff{}{t}\ket{\Psi}\]
+and the Hamiltonian:
+\[\hat{H} = KE + PE = \frac{\hat{p}^2}{2m} + V(\hat{x}), \quad [\hat{x}, \hat{p}] = i\hbar, \quad \hat{p} = \frac{\hbar}{i}\vec{\nabla}\]
+whose eigenvalue corresponds to energy measurement,
+\[\hat{H}\ket{\Psi_n} = E_n\ket{\Psi_n}\]
+and the time evolution function
+\[\Psi(x, t) = \sum_{n=0}^{\infty} \braket{\Psi_n| \Psi(x, t=0)} e^{-iE_n t/\hbar}\]
+and the probability density function $\rho(x, t) = |\Psi(x, t)|^2$\\
+and the normalization condition
+\[\int_{-\infty}^{\infty} |\Psi(x, t)|^2 \, dx = 1\]
+
+Recall that for a particle in a box of length $L$, we derived
+\[\Psi_n(x) = \sqrt{\frac{2}{L}}\sin\left( \frac{n\pi}{L}x\right), \quad n = 1, 2,\ldots\]
+\[E_n = \frac{n^2\hbar^2\pi^2}{2mL^2}\]
+
+\section{Multiple Particles}
+
+In 137B we will tackle many-body systems (MB), where now we have
+\[\Psi_{MB}(x_1, x_2, \ldots)\]
+\[\rho(x_1, x_2, \ldots) = |\Psi_{MB}(x_1, x_2, \ldots)|^2\]
+\[\int\int\ldots\int |\Psi_{MB}|^2 \, dx_1\, dx_2\ldots = 1\]
+\[\hat{H}_{MB} = \frac{p_1^2}{2m} + \frac{p_2^2}{2m} + \ldots + V(x_1, x_2, \ldots)\]
+\[\vec{p}_i = \frac{\hbar}{i}\vec{\nabla}_i \quad \hat{H}_{MB}\Psi_{MB} = E_n \Psi_{MB}\]
+\[\Psi_{MB}(t=0) = \Psi_n(x_1, x_2, \ldots) \quad \Psi_{MB}(t > 0) = \Psi_n(x_1, x_2, \ldots)e^{-iE_nt/\hbar}\]
+
+note the similar structure from 1 to many bodies. Our new goal is to solve the eigenvalue equation
+\[\hat{H}_{MB} \Psi_n = E_n\Psi_n\]
+
+If there is no interaction between the particles in the system, this is easy. If there are interactions, it is insanely difficult. Next time, we'll start by solving the case with no interactions using separation of variables.
+
+\end{document}
