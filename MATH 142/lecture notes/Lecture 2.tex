@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+
+
+\input {preamble}
+
+\title{Math 142 Lecture Notes\\ Lecture 2}
+\date{29 August, 2025}
+\author{Walter Cheng}
+
+\begin{document}
+
+\maketitle
+
+\section{Announcements}
+\begin{itemize}
+	\item Midterm 1: Monday, October 6
+	\item Midterm 2: Friday, November 14
+	\item Homework logistics: Each lecture Professor Rieffel will assign reading/exercises, they will be due on Fridays at 11:59pm. No late homework will be accepted, but the lowest 4 scores will be dropped.
+	\item \textbf{Reading Assignment}: Read \S 12 and page 119
+	\item \textbf{Assigned HW Problems}: Exercises 2 \& 3 on page 83 
+\end{itemize}
+
+\section{Generalizing Continuity}
+Recall from Lecture 1: Given metric spaces $(X, d^X), (Y, d^Y)$ and $f\colon X \to Y$,\\
+\definition[Continuity at a point] $f$ is continuous at $x_0$ if for any open $O \subseteq Y$ with $f(x_0) \in O$ there is an open set $U \subseteq X$ containing $x_0$ such that $U \subseteq f^{-1}(O)$. 
+
+We can broaden this definition to continuity of a function:\\
+\definition[Continuity] $f$ is continuous if it is continuous at every $x \in X$. Formally, for every $x \in X$ and $O \subseteq Y$ with $f(x) \in O$, there is an open $U \subseteq X$ s.t. $U \subseteq f^{-1}(O)$.
+
+In general terms we can say that $f$ is continuous if for any open $O$ in $Y$ the preimage of $O$ is open in $X$. These definitions are equivalent because any point $x \in f^{-1}(O)$ corresponds to a point $x_0 \in O$, and by definition of continuity there is an open set around $x$.
+
+\section{Topology}
+Consider a collection $\mathcal{T}^X$ of open sets in $(X, d^X)$. It has the following properties:
+\begin{enumerate}
+	\item $X, \emptyset \in \mathcal{T}^X$
+	\item Any arbitrary (possibly infinite) union of a collection of open sets is open.\\
+		If $x$ is in the union then it is part of one of the open sets, therefore it must have an open ball around it which is also in the union.
+	\item Any \textbf{finite} intersection of open sets is open.\\
+		If $x$ is in the finite intersection of open sets then it must be in all open sets. Therefore for the $j$th open set there is a $B(x, r_j)$ in the open set. Let $r = \min\{r_0\ldots r_n\}$, then $B(x, r) \subseteq \bigcap_{i=1}^{n} O_i$.
+\end{enumerate}
+
+In a kind of roundabout way, we can abstract these properties to a structure known as a topology.\\
+\definition[Topology] Given a set $X$, a \textbf{topology} $\mathcal{T}$ on $X$ is a collection of subsets of $X$ that satisfies the properties above. Rewritten, those are
+\begin{enumerate}
+	\item $X, \emptyset \in \mathcal{T}$
+	\item Any arbitrary union of elements in $\mathcal{T}$ is in $\mathcal{T}$
+	\item Any finite intersection of elements in $\mathcal{T}$ is in $\mathcal{T}$
+\end{enumerate}
+
+Note that there is no metric involved in this definition.
+
+\section{Comparing Topologies}
+If $\mathcal{T}_1$ and $\mathcal{T}_2$ are topologies on $X$, we say that $\mathcal{T}_1$ is \textbf{stronger/finer/bigger} than $\mathcal{T}_2$ if $\mathcal{T}_2 \subseteq \mathcal{T}_1$. 
+
+Conversely, we say $\mathcal{T}_1$ is \textbf{weaker/coarser/smaller} than $\mathcal{T}_2$ if $\mathcal{T}_1 \subseteq \mathcal{T}_2$.
+
+There is a biggest topology on $X$, namely the topology consisting of all subsets of $X$, the power set of $X$. This topology corresponds to a metric, where $d(x_1, x_2) = 1$ if $x_1 \neq x_2$ and $0$ otherwise. This is called the \textbf{discrete} topology (use balls of radius $1/2$ to show openness).
+
+There is also a smallest topology, consisting of $\{X, \emptyset\}$, called the \textbf{trivial} or \textbf{indiscrete} topology. Given that $|X| \geq 2$, this does not come from a metric.
+
+\end{document}

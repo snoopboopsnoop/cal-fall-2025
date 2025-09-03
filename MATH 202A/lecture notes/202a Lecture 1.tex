@@ -29,7 +29,7 @@ Our goal now is to express the irrationals as a limit of a sequence of rational 
 \begin{enumerate}
 	\item (reflexive) $x \sim x$
 	\item (symmetric) $x \sim y \implies y \sim x$
-	\item (transitive) $x \sim y \cap y \sim z \implies x \sim z$
+	\item (transitive) $x \sim y \wedge y \sim z \implies x \sim z$
 \end{enumerate}
 
 We can partition $S$ into equivalence classes, where the equivalence class for some $s \in S$ is the set $\{x \in S : x \sim s\}$.
@@ -51,6 +51,7 @@ as well as express the distance between two irrational numbers,
 This completes our definition of an irrational number internally (within $\Q$).
 
 \section{Size of Sets}
+\textit{Refer to section 2.2 of course notes}
 
 We'll now consider intervals with an open left and closed right. Define the set of all finite disjoint unions of these to be $\mathcal{I}$. Formally,
 \[\mathcal{I} = \bigcup_{i=1}^n (a_i, b_i]\]
@@ -60,5 +61,49 @@ where $n \in \N^+$ and $a_1 < b_1 < a_2 < \ldots < a_n < b_n$. Also permit $a_i,
 $\mathcal{I}$ is closed under complement, pairwise intersection, and finite intersection (shown by induction).
 
 We define $l(I) = \sum_{i=1}^n (b_i - a_i) \in [0, \infty) \cup \{\infty\}$. Now we want to define the notion of distance.
+
+We'll do this with symmetric difference:
+\[A \triangle B = (A \setminus B) \cup (B \setminus A)\]
+
+and then define $d(I_1, I_2) = l(I_1 \triangle I_2)$, for $I_1, I_2 \in \mathcal{I}$. It can be shown that $d$ is a metric on $\mathcal{I}$.
+
+Now consider the closure of $\mathcal{I}$, $\overline{\mathcal{I}}$. Our aim is to make this a metric space. Let $I, J \in \overline{\mathcal{I}}$. We'll define distance like this:
+\[d(I, J) = \lim_n d(I_n, J_n)\]
+
+From this, we have a notion of measure:
+\[l(I) = \lim_n l(I_n)\]
+
+\section{Integration}
+\textit{Section 2.3 of course notes}
+
+From calculus, we understand the notion of integration as "area under the curve" $= \int_a^b f$. From analysis (Math 104) we know that we the idea of Riemann integration centers around a set of partitions $P$ and infimum and supremum integrals 
+\[I^{\downarrow}(f,P) = \sum_{i=1}^n \inf\{f(x) : x \in [x_{i-1}, x_i]\}(x_i - x_{i-1})\]
+and similarly for $I^{\uparrow}$.
+
+From this, we define integrability:\\
+\definition[Riemann Integrable] $f\colon [a, b] \to \R$ is \textbf{Riemann integrable} if $\exists I \in \R$ s.t. $\forall \epsilon > 0, \, \exists \delta > 0$ s.t. $\forall P$ with $\operatorname{mesh}(P) < \delta$,
+\[|I^{\uparrow}(f, P) - I| < \epsilon\]
+
+Where $\operatorname{mesh}(P)$ is the length of the longest interval in $P$.
+
+The integral-defined function
+\[d(f, g) = \int|f-g|\]
+is a metric on the space of continuous functions called the $L^1$ norm. We can define pointwise convergence in $L^1$.
+
+Now consider
+\[f_n \to \mathds{1}_{[1/2, 1]}\]
+
+where $f_n\colon [0,1] \to [0,1]$ are pointwise decreasing. We can have the problem where each $f_n$ is Riemann integrable, but
+\[f = \lim_n f_n\]
+is not. Thus, we wish to broaden our integration to Lebesgue theory.
+
+An important example to highlight is the integral of the indicator function. What is
+\[\int_0^1 \mathds{1}_{\Q}\]
+where $\mathds{1}_{\Q} = \begin{cases}
+	1 & \text{ if $x \in \Q$}\\
+	0 & \text{ else}
+\end{cases}$
+
+Riemann integration says this integral doesn't exist ($\Q$ is dense in $\R$). But intuitively we think it should really be $0$.
 
 \end{document}
