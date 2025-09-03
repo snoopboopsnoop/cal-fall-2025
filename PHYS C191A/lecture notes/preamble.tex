@@ -1,0 +1,91 @@
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{thmtools}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{subfigure}
+\usepackage[all,arc]{xy}
+\usepackage{tikz-cd}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{braket}
+\graphicspath{{./images/}}
+\usepackage{wrapfig}
+\usepackage{todonotes}
+\usepackage[titletoc,toc,title]{appendix}
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+\usepackage{url}
+\usepackage{soul}
+\setuldepth{under}
+
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage[parfill]{parskip}
+\sloppy
+
+\usepackage{soul}
+\newcommand{\hlgray}[1]{{\sethlcolor{lightgray}\hl{#1}}}
+
+\usepackage{float}
+\usepackage[breakable, theorems, skins]{tcolorbox}
+
+%spacing
+\def\lstsp{\hspace{\labelsep}}
+\def\tab{\indent\hspace{15pt}}
+
+%new commands
+\def\dx{\mathrm{d}x}
+\def\Z{\mathbb{Z}}
+\def\N{\mathbb{N}}
+\def\R{\mathbb{R}}
+\def\Q{\mathbb{Q}}
+\def\C{\mathbb{C}}
+\def\qedsymbol{$\blacksquare$}
+\newcommand{\bem}{\begin{bmatrix}}
+\newcommand{\enm}{\end{bmatrix}}
+
+
+%calculus
+\def\D{\mathrm{d}}
+\def\dint{\displaystyle\int}
+\newcommand{\diff}[3][]{\ensuremath{\frac{\D^{#1} #2}{\D #3^{#1}}}}
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}} %https://tex.stackexchange.com/questions/60453/reducing-font-size-in-equation
+\newcommand{\partials}[3][]{\ensuremath{\frac{\partial^{#1} {#2}}{\partial {#3}^{#1}}}}
+
+\tcbset{
+	exstyle/.style={enhanced, breakable, beforeafter skip balanced=10pt, coltitle=black, theorem style=plain, terminator sign={.\ \ \ }, fonttitle=\bfseries\upshape, fontupper=\upshape, blanker, borderline west={4pt}{-8pt}{orange!75!white}},
+}
+
+\newtcbtheorem[number within=subsection]{example}{Example}{exstyle}{ex}
+\newtcbtheorem[number within=subsection]{examples}{Examples}{exstyle}{ex}
+
+%img
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./images/}{#1.pdf_tex}
+}
+
+
+%%% Theorem styles %%%
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem} % Enables you to use the theorem environment
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem*{claim*}{Claim}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{definition}\newtheorem*{definition*}{Definition}

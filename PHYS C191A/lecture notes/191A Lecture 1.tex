@@ -1,0 +1,42 @@
+\documentclass[11pt]{article}
+
+\input{preamble}
+
+\title{Physics C191A Lecture Notes\\ Lecture 1}
+\date{28 August, 2025}
+\author{Walter Cheng}
+
+\begin{document}
+
+\maketitle
+
+\section{Basic Quantum Mechanics and Qubits}
+
+There are many ways qubits can be constructed: photons, polarization, nuclear spins; but we're going to start with the theory of quantum computing.
+
+Consider the classical bits $0, 1$. What if we wanted to encode these bits in the state of an electron in a hydrogen atom?
+
+We know from QM (Physics 137) that an electron orbiting a proton can be at different energy levels. For a qubit, assume we have two energy states, a ground level $\ket{0}$ and an excited state $\ket{1}$. 
+
+The superposition principle of QM states that the state of our hydrogen atom system can be represented as a linear combination of our energy states,
+\[\alpha\ket{0} + \beta\ket{1}, \quad \alpha, \beta \in \C, \quad |\alpha|^2 + |\beta|^2 = 1\]
+
+For example, $\frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}$ or $\frac{1}{\sqrt{2}}\ket{0} - \frac{1}{\sqrt{2}}\ket{1}$.
+
+For multiple energy states we can generalize the superposition principle,
+\[\alpha_0\ket{0} + \alpha_1 \ket{1} + \ldots \alpha_{k-1} \ket{k-1}\]
+\[\sum_{j=0}^{k-1} |\alpha_j|^2 = 1\]
+
+Our second postulate of QM, the measurement postulate, says that when we measure something, we see outcome $j$ with probability $|\alpha_j|^2$, and that upon measurement, the new state of the electron is $\ket{j}$.
+
+Consider how we can represent $n$ bits, i.e. $k = 2^n$. We would want to use $n$ qubits, a system of $n$ hydrogen atoms. Thus, an $n$ bit string can be stored as the superposition of all the atoms' measured energy states.
+
+States can be represented as vectors,
+\[\alpha\ket{0} + \beta\ket{1} = \begin{pmatrix}\alpha \\ \beta \end{pmatrix} \in \C^2\]
+\[\alpha_0\ket{0} + \ldots + \alpha_{k-1}\ket{k-1} = \begin{pmatrix} \alpha_0 \\ \alpha_ 1 \\ \vdots \\ \alpha_{k-1} \end{pmatrix} \in \C^k\]
+
+Thus, elementary basis vectors correspond to the energy states; or conversely, each state is a unit vector in a $k$-dimensional Hilbert space.
+
+We also have the unitary evolution postulate, which says that operators correspond to rotations of the unit sphere that represents our Hilbert space. These operators can be thought of as "quantum gates".
+
+\end{document}
